@@ -1,11 +1,161 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<title>Project page</title>
-<style>body{display:grid;min-height:100vh;place-items:center;margin:0;background:#fafafa;color:#222;font:18px system-ui,sans-serif;text-align:center}main{padding:2rem}h1{font-size:2rem;margin:0 0 .5rem}p{margin:0;color:#666}</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="CAST recovers motion from monocular video for arbitrary target skeletons through topology-aware, reliability-gated rotation correction.">
+  <meta name="theme-color" content="#152c45">
+  <title>CAST — Real-Time Motion Capture for Any Skeleton Topology</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23152c45'/%3E%3Cpath d='M23 9H14a7 7 0 000 14h9' fill='none' stroke='%2359ded2' stroke-width='4'/%3E%3C/svg%3E">
+  <!-- Google Sans / Noto Sans are only loaded when the page is served with network
+       access. Kept off so the page is self-contained and renders instantly on
+       restricted networks; uncomment this line before the public release.
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans:400,500,700|Noto+Sans:400,400i,700&display=swap" rel="stylesheet">
+  -->
+  <link rel="stylesheet" href="bulma.min.css">
+  <link rel="stylesheet" href="template.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
 </head>
-<body><main><h1>Project page</h1><p>Content will be added later.</p></main></body>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-widescreen">
+        <div class="column has-text-centered">
+          <h1 id="title" class="title is-2 publication-title">Real-Time Motion Capture for Any Skeleton Topology</h1>
+          <div class="is-size-5 publication-authors"><span class="author-block">Anonymous Authors</span></div>
+          <p class="publication-venue">Under review · research draft</p>
+          <div class="publication-links">
+            <span class="link-block">
+              <a class="external-link button is-normal is-rounded" href="#overview"><span class="icon" aria-hidden="true">▶</span><span>Video</span></a>
+            </span>
+            <span class="link-block">
+              <a class="external-link button is-normal is-rounded" href="#results"><span class="icon" aria-hidden="true">▤</span><span>Results</span></a>
+            </span>
+            <span class="link-block">
+              <a class="external-link button is-normal is-rounded" href="#method"><span class="icon" aria-hidden="true">✦</span><span>Method</span></a>
+            </span>
+            <!-- Enable once the code repository is public:
+            <span class="link-block">
+              <a class="external-link button is-normal is-rounded" href="https://github.com/CAST-mocap/CAST" target="_blank" rel="noopener"><span class="icon" aria-hidden="true">⌘</span><span>Code</span></a>
+            </span>
+            -->
+          </div>
+          <div class="highlights"><div><strong>53.9 <span>FPS</span></strong><p>Causal CAST-B · 52 joints · A100</p></div><div><strong>27.6–62.5<span>%</span></strong><p>Lower matched-rig MPJPE vs. MCA V2*</p></div><div><strong>300 <span>pairs</span></strong><p>Cross-skeleton evaluation on Mixamo</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main id="main">
+
+  <section class="hero teaser" id="overview" aria-labelledby="overview-video-title">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <h2 id="overview-video-title" class="title is-3 has-text-centered">CAST, explained.</h2>
+        <figure class="teaser-figure"><video controls playsinline preload="metadata" width="1920" height="1080" poster="assets/posters/cast-explainer.jpg" src="assets/videos/cast-explainer.mp4" aria-label="Overview video explaining how CAST recovers motion for an arbitrary target skeleton"></video></figure>
+        <h2 class="subtitle has-text-centered">One video. Different bodies. Motion that carries across.</h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hero is-light" aria-labelledby="abstract-title">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered"><div class="column is-four-fifths"><h2 id="abstract-title" class="title is-3">Abstract</h2></div></div>
+      <div class="columns is-centered"><div class="column is-four-fifths content has-text-justified">
+        <p>This paper studies recovering motion from a monocular video, even when the target skeleton topology differs from the subject observed in the video. Although previous work has made efforts to resolve this problem, they remain vulnerable to joint-rotation errors that are coupled across the skeleton and can propagate along its kinematic hierarchy. To mitigate such issues, we present a topology-aware motion capture framework that combines visual queries with geometric rotation correction.</p>
+        <p>Specifically, the backbone injects image evidence into queries defined by the target skeleton, exchanges information across its joints, and aggregates motion over time to predict rest-relative rotations. A geometric correction module predicts bone directions and their reliability, then applies topology-dependent alignment updates while preserving unconstrained rotational components. All components are trained jointly with motion-derived supervision.</p>
+        <p>Experiments under the TopoCap evaluation protocol show that the proposed framework improves motion recovery across different target topologies, including unseen structures. Reference-based cross-skeleton evaluation on a curated Mixamo benchmark and a user preference study further assess transfer to different target structures. Code is available at <a href="https://cast-mocap.github.io/">https://cast-mocap.github.io/</a>.</p>
+      </div></div>
+    </div>
+  </section>
+
+  <section class="section demo-section" id="demo" aria-labelledby="demo-title">
+    <div class="container is-max-desktop">
+      <h2 id="demo-title" class="title is-3 has-text-centered">One input, four target rigs.</h2>
+      <p class="subtitle has-text-centered section-subtitle">Choose an input to see the same action expressed through different skeletons.</p>
+      <div class="demo-toolbar"><div class="source-buttons" role="group" aria-label="Select source video"><button class="source-button active" data-source="horse01" aria-pressed="true">Horse</button><button class="source-button" data-source="crab03" aria-pressed="false">Crab</button><button class="source-button" data-source="bird01" aria-pressed="false">Ostrich</button><button class="source-button" data-source="human04" aria-pressed="false">Human</button></div><span class="model-label">CAST-L</span></div>
+      <div class="video-grid" id="video-grid">
+        <figure class="video-card input-card"><figcaption><span class="video-index">IN</span> Input RGB</figcaption><video muted playsinline preload="metadata" src="assets/videos/horse01-input.mp4" poster="assets/posters/horse01-input.jpg" aria-label="Horse input video"></video></figure>
+        <figure class="video-card"><figcaption><span class="video-index">01</span> Horse</figcaption><video muted playsinline preload="metadata" src="assets/videos/horse01-horse.mp4" poster="assets/posters/horse01-horse.jpg" aria-label="Predicted motion on the horse target"></video></figure>
+        <figure class="video-card"><figcaption><span class="video-index">02</span> Crab</figcaption><video muted playsinline preload="metadata" src="assets/videos/horse01-crab.mp4" poster="assets/posters/horse01-crab.jpg" aria-label="Predicted motion on the crab target"></video></figure>
+        <figure class="video-card"><figcaption><span class="video-index">03</span> Ostrich</figcaption><video muted playsinline preload="metadata" src="assets/videos/horse01-bird.mp4" poster="assets/posters/horse01-bird.jpg" aria-label="Predicted motion on the ostrich target"></video></figure>
+        <figure class="video-card"><figcaption><span class="video-index">04</span> Human</figcaption><video muted playsinline preload="metadata" src="assets/videos/horse01-human.mp4" poster="assets/posters/horse01-human.jpg" aria-label="Predicted motion on the human target"></video></figure>
+      </div>
+      <div class="playback"><button id="play-toggle" class="play-button" aria-label="Play all five videos">Play all</button><button id="restart" class="restart-button" aria-label="Restart all five videos">Restart</button><label class="sr-only" for="timeline">Video position</label><input id="timeline" type="range" min="0" max="1000" value="0" step="1"><span id="video-time" class="video-time">0.0 / 2.7 s</span></div>
+      <p class="caption" id="demo-caption" aria-live="polite"></p>
+      <noscript><p>Enable JavaScript for synchronized playback and input selection. <a href="assets/videos/horse01-input.mp4">Open input video</a> · <a href="assets/videos/horse01-horse.mp4">Horse</a> · <a href="assets/videos/horse01-crab.mp4">Crab</a> · <a href="assets/videos/horse01-bird.mp4">Ostrich</a> · <a href="assets/videos/horse01-human.mp4">Human</a></p></noscript>
+    </div>
+  </section>
+
+  <section class="section" id="method" aria-labelledby="method-title">
+    <div class="container is-max-desktop">
+      <h2 id="method-title" class="title is-3 has-text-centered">Learn the motion. Let geometry guide the correction.</h2>
+      <p class="subtitle has-text-centered section-subtitle">Visual evidence meets the structure of the target skeleton.</p>
+      <figure class="paper-figure"><a href="assets/method.png" target="_blank" rel="noopener" aria-label="Open full-resolution method figure"><img src="assets/method.png" width="2400" height="1166" loading="lazy" alt="CAST architecture: DINOv3 video features and target-skeleton queries feed an encoder and rotation decoder. A bone direction head provides global directions and confidence to GRACE, which refines the rotations. The lower panels explain rotational observability and geometric alignment."></a><figcaption>CAST jointly trains its motion predictor and GRACE. The target’s outgoing bone geometry determines which rotational components can be constrained.</figcaption></figure>
+      <div class="method-steps"><article><span class="step-number">01</span><h3 class="title is-5">Condition on the target</h3><p>Skeleton queries gather image evidence, exchange information across joints, and aggregate motion over time.</p></article><article><span class="step-number">02</span><h3 class="title is-5">Predict global directions</h3><p>The network estimates local rotations, global bone directions, and directional reliability from the learned features.</p></article><article><span class="step-number">03</span><h3 class="title is-5">Correct along the hierarchy</h3><p>GRACE aligns bone directions and gates each update before passing the corrected orientation to child joints.</p></article></div>
+      <aside class="geometry-note"><strong>What can geometry determine?</strong><p>Leaf joints provide no directional constraint. A single direction constrains swing but leaves axial twist ambiguous. Two non-collinear directions constrain all three rotation components.</p></aside>
+    </div>
+  </section>
+
+  <section class="section results-section hero is-light" id="results" aria-labelledby="results-title">
+    <div class="container is-max-desktop">
+      <h2 id="results-title" class="title is-3 has-text-centered">Across familiar and unseen structures.</h2>
+      <p class="subtitle has-text-centered section-subtitle">Matched-rig reconstruction and reference-based cross-skeleton transfer.</p>
+      <div class="mocap-reels" id="mocap-comparisons">
+        <h3 class="title is-5">Matched-rig motion capture</h3>
+        <p class="reels-intro">Compare the captured motion with the input across ten Zoo and ten MObj sequences.</p>
+        <figure class="mocap-reel">
+          <figcaption class="reel-heading"><strong>Zoo</strong><span>10 sequences</span></figcaption>
+          <div class="reel-columns three" aria-hidden="true"><span>Input</span><span>MoCapAnything V2</span><span class="reel-ours">CAST (Ours)</span></div>
+          <video controls playsinline muted loop preload="metadata" width="1568" height="528" src="assets/videos/zoo-mocap.mp4" poster="assets/posters/zoo-mocap.jpg" aria-label="Zoo motion capture comparison, ten sequences. Left to right: input, MoCapAnything V2, CAST ours."></video>
+        </figure>
+        <figure class="mocap-reel">
+          <figcaption class="reel-heading"><strong>MObj</strong><span>10 sequences</span></figcaption>
+          <div class="reel-columns four" aria-hidden="true"><span>Input</span><span>TopoCap</span><span>MoCapAnything V2</span><span class="reel-ours">CAST (Ours)</span></div>
+          <video controls playsinline muted loop preload="metadata" width="2088" height="528" src="assets/videos/obj-mocap.mp4" poster="assets/posters/obj-mocap.jpg" aria-label="MObj motion capture comparison, ten sequences. Left to right: input, TopoCap, MoCapAnything V2, CAST ours."></video>
+        </figure>
+      </div>
+      <section class="cross-reels" id="cross-skeleton" aria-labelledby="cross-reels-title">
+        <h3 id="cross-reels-title" class="title is-5">Cross-skeleton motion capture</h3>
+        <p class="reels-intro">Transfer motion across different source and target skeletons. Each row pairs the input clip with the motion CAST transfers to the target rig.</p>
+        <div class="cross-group-buttons" role="group" aria-label="Cross-skeleton video group">
+          <button class="source-button" data-cross-group="zoo2zoo" aria-pressed="false" aria-controls="cross-reel-panel">Zoo → Zoo</button>
+          <button class="source-button" data-cross-group="zoo2obj" aria-pressed="false" aria-controls="cross-reel-panel">Zoo → Obj</button>
+          <button class="source-button" data-cross-group="obj2zoo" aria-pressed="false" aria-controls="cross-reel-panel">Obj → Zoo</button>
+          <button class="source-button active" data-cross-group="obj2obj" aria-pressed="true" aria-controls="cross-reel-panel">Obj → Obj</button>
+          <button class="source-button" data-cross-group="mixamo" aria-pressed="false" aria-controls="cross-reel-panel">Mixamo</button>
+        </div>
+        <figure class="mocap-reel" id="cross-reel-panel">
+          <figcaption class="reel-heading"><strong id="cross-reel-label" aria-live="polite">Obj → Obj</strong><span id="cross-reel-meta">15 sequences</span></figcaption>
+          <div id="cross-reel-media">
+            <div class="reel-columns two" id="cross-reel-columns" aria-hidden="true"><span>Input</span><span class="reel-ours">CAST (Ours)</span></div>
+            <video id="cross-reel-video" controls playsinline muted loop preload="metadata" width="1048" height="528" src="assets/videos/obj2obj.mp4" poster="assets/posters/obj2obj.jpg" aria-label="Obj to Obj cross-skeleton motion capture, 15 sequences"></video>
+          </div>
+        </figure>
+      </section>
+      <div class="results-toolbar"><label for="dataset">Benchmark</label><select id="dataset"><option value="zoo">Zoo · Matched rig</option><option value="seen">MObj Seen · Matched rig</option><option value="unseen">MObj Unseen · Matched rig</option><option value="mixamo">Mixamo · Cross skeleton</option></select><span>Lower is better ↓</span></div>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Benchmark results, horizontally scrollable on small screens"><table class="table is-fullwidth"><caption id="table-caption">Zoo · Matched-rig motion capture</caption><thead><tr><th scope="col">Method</th><th scope="col">MPJPE <small>(mm)</small></th><th scope="col">PA-MPJPE <small>(mm)</small></th><th scope="col">MPJVE <small>(mm/frame)</small></th><th scope="col">CD</th></tr></thead><tbody id="results-body"><tr><th scope="row">Puppeteer</th><td>454.70</td><td>236.38</td><td>19.74</td><td>0.245</td></tr><tr><th scope="row">TopoCap</th><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><th scope="row">MCA V2*</th><td>105.52</td><td>67.04</td><td>10.35</td><td>0.077</td></tr><tr class="ours"><th scope="row">CAST-B</th><td>42.68</td><td>33.23</td><td>5.48</td><td>0.036</td></tr><tr class="best"><th scope="row">CAST-L <span>Ours</span></th><td>39.59</td><td>31.05</td><td>5.14</td><td>0.034</td></tr></tbody></table></div>
+      <p class="caption">Results from the current manuscript. MCA V2* is our reimplementation trained on the same Zoo and MObj data. Metrics use root-centered predictions and the TopoCap normalization convention; CD is in normalized coordinates. A dash denotes an unreported result.</p>
+      <div class="result-notes"><article><strong>Unseen skeletons</strong><p>CAST-L reaches 74.63 mm MPJPE on MObj Unseen, compared with 103.04 mm for MCA V2*.</p></article><article><strong>Cross-skeleton transfer</strong><p>CAST-L reduces MPJPE by 54.7% relative to MCA V2* across 300 ordered source–target pairs on Mixamo.</p></article><article><strong>Perceptual quality</strong><p>CAST-L receives 63.3% of first-choice votes from 18 participants across 360 rankings.</p></article></div>
+    </div>
+  </section>
+
+  <section class="section" id="applications" aria-labelledby="applications-title">
+    <div class="container is-max-desktop">
+      <h2 id="applications-title" class="title is-3 has-text-centered">Motion, on your terms.</h2>
+      <p class="subtitle has-text-centered section-subtitle">Beyond dense video: streaming inference and key-frame completion.</p>
+      <div class="application-grid"><article class="streaming"><p class="eyebrow">Causal inference</p><h3 class="title is-5">Incoming frames. Immediate motion.</h3><p>A causal CAST-B variant processes incoming frames without waiting for future observations.</p><div class="fps">51.3–53.9 <span>FPS</span></div><p class="streaming-note">Single NVIDIA A100 · 30–89 joints</p><p class="caption">Measured with bf16 and torch.compile. Includes the frozen image backbone and motion prediction; excludes video acquisition and mesh rendering.</p></article><article class="completion"><p class="eyebrow">Key-frame completion</p><h3 class="title is-5">Fewer observations. A complete motion sequence.</h3><p>With one observed image every four frames, the completion variant increases MPJPE by 5.7–8.5% relative to dense input.</p><a class="completion-preview" href="assets/completion.png" target="_blank" rel="noopener"><img src="assets/completion.png" loading="lazy" alt="Sketch-guided completion examples showing two observed sketches and the completed poses in between."></a><p class="caption">Sketch-guided examples at observation interval k = 4. Open the figure to view all 35 examples.</p></article></div>
+    </div>
+  </section>
+
+  <section class="section hero is-light"><div class="container is-max-desktop"><h2 class="title is-3 has-text-centered">What remains challenging</h2><div class="columns is-centered"><div class="column is-four-fifths content has-text-justified"><p>Bone directions cannot resolve every rotation: axial twist and leaf-joint orientation still depend on the learned predictor. CAST also assumes fixed parent-local bone offsets. Motion that changes these offsets lies outside its rotation-only representation.</p></div></div></div></section>
+
+  </main>
+
+  <footer class="footer"><div class="content has-text-centered"><p><strong>CAST</strong> · Real-Time Motion Capture for Any Skeleton Topology</p><p class="footer-note">Anonymous submission · research draft</p></div></footer>
+</body>
 </html>

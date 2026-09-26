@@ -1,0 +1,17 @@
+# Internal provenance and development files.
+# They document asset provenance and local tooling, so they stay in the internal
+# paper repository and must never be published with this site.
+SOURCES.md
+README.md
+preview.mjs
+.preview
+node_modules/
+
+# Belt and braces: manuscript sources and office documents never belong here.
+*.tex
+*.bib
+*.docx
+*.pptx
+*.xlsx
+*.bbl
+*.aux

@@ -1,0 +1,58 @@
+/* Academic project-page look (Bulma + Google Sans / Noto Sans), adapted for CAST.
+   Self-contained: no trackers, no CDN scripts, Bulma is vendored locally. */
+:root{
+  --tp-link: hsl(204, 86%, 53%);
+  --tp-ink: #1c1c1c;
+  --tp-muted: #6b6b6b;
+  --tp-rule: #e8e8e8;
+  --tp-radius: 10px;
+}
+body{
+  font-family: 'Noto Sans', -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: var(--tp-ink);
+  font-size: 16px;
+  line-height: 1.65;
+}
+.title, .subtitle, .publication-title, .footer strong{
+  font-family: 'Google Sans', 'Noto Sans', -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+}
+a{ color: var(--tp-link); }
+
+/* Hero: title, anonymous author line, link pills */
+.publication-title{
+  max-width: 26ch;
+  margin: 0 auto .5rem;
+  line-height: 1.14;
+  font-weight: 500;
+}
+.publication-authors{ color: #363636; }
+.publication-venue{ margin-top: .55rem; color: var(--tp-muted); font-size: .95rem; }
+.publication-links{ margin-top: 1.1rem; }
+.link-block{ display: inline-block; margin: .25rem .3rem; }
+.external-link.button{ border-color: #dcdcdc; box-shadow: none; font-weight: 500; }
+.external-link.button:hover{ border-color: var(--tp-link); color: var(--tp-link); }
+.external-link .icon{ width: 1.1rem; margin-right: .15rem; font-size: .9rem; }
+
+/* Media: rounded corners everywhere, as in the reference page */
+.teaser-figure video, .paper-figure img, .mocap-reel video,
+.video-card video, .completion-preview img{
+  width: 100%; height: auto; display: block; border-radius: var(--tp-radius);
+}
+.paper-figure, .teaser-figure{ margin: 0 auto; }
+figcaption{ color: var(--tp-muted); font-size: .9rem; margin-top: .6rem; }
+.section-subtitle{ margin-top: -.35rem; margin-bottom: 1.8rem !important; }
+.section{ padding: 3.2rem 1.5rem; }
+.section.hero.is-light{ background: #f6f6f6; }
+.hero.teaser .hero-body{ padding-top: 0; }
+
+/* Footer */
+.footer{ background: #fff; border-top: 1px solid var(--tp-rule); padding: 2.5rem 1.5rem; color: var(--tp-muted); font-size: .95rem; }
+.footer-note{ font-size: .85rem; }
+
+.skip-link{ position: absolute; left: -9999px; }
+.skip-link:focus{ left: 1rem; top: 1rem; z-index: 30; background: #fff; padding: .5rem .8rem; border-radius: 6px; }
+
+@media screen and (max-width: 768px){
+  .publication-title{ font-size: 1.7rem; }
+  .section{ padding: 2.2rem 1rem; }
+}
