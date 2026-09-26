@@ -38,11 +38,9 @@
             <span class="link-block">
               <a class="external-link button is-normal is-rounded" href="#method"><span class="icon" aria-hidden="true">✦</span><span>Method</span></a>
             </span>
-            <!-- Enable once the code repository is public:
             <span class="link-block">
-              <a class="external-link button is-normal is-rounded" href="https://github.com/CAST-mocap/CAST" target="_blank" rel="noopener"><span class="icon" aria-hidden="true">⌘</span><span>Code</span></a>
+              <a class="external-link button is-normal is-rounded" href="https://github.com/CAST-mocap/CAST" target="_blank" rel="noopener"><span class="icon" aria-hidden="true">&lt;/&gt;</span><span>Code</span></a>
             </span>
-            -->
           </div>
           <div class="highlights"><div><strong>53.9 <span>FPS</span></strong><p>Causal CAST-B · 52 joints · A100</p></div><div><strong>27.6–62.5<span>%</span></strong><p>Lower matched-rig MPJPE vs. MCA V2*</p></div><div><strong>300 <span>pairs</span></strong><p>Cross-skeleton evaluation on Mixamo</p></div></div>
         </div>
@@ -66,9 +64,9 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered"><div class="column is-four-fifths"><h2 id="abstract-title" class="title is-3">Abstract</h2></div></div>
       <div class="columns is-centered"><div class="column is-four-fifths content has-text-justified">
-        <p>This paper studies recovering motion from a monocular video, even when the target skeleton topology differs from the subject observed in the video. Although previous work has made efforts to resolve this problem, they remain vulnerable to joint-rotation errors that are coupled across the skeleton and can propagate along its kinematic hierarchy. To mitigate such issues, we present a topology-aware motion capture framework that combines visual queries with geometric rotation correction.</p>
-        <p>Specifically, the backbone injects image evidence into queries defined by the target skeleton, exchanges information across its joints, and aggregates motion over time to predict rest-relative rotations. A geometric correction module predicts bone directions and their reliability, then applies topology-dependent alignment updates while preserving unconstrained rotational components. All components are trained jointly with motion-derived supervision.</p>
-        <p>Experiments under the TopoCap evaluation protocol show that the proposed framework improves motion recovery across different target topologies, including unseen structures. Reference-based cross-skeleton evaluation on a curated Mixamo benchmark and a user preference study further assess transfer to different target structures. Code is available at <a href="https://cast-mocap.github.io/">https://cast-mocap.github.io/</a>.</p>
+        <p>This paper studies recovering motion from a monocular video, even when the target skeleton topology differs from the subject observed in the video. Although previous work has made efforts to resolve this problem, they remain vulnerable to joint-rotation errors that are coupled across the skeleton and can propagate along its kinematic hierarchy. To mitigate these errors, we present CAST, a topology-aware motion capture framework that combines learned local rotations with geometric correction guided by predicted global bone directions.</p>
+        <p>Our observability analysis characterizes which rotational components can be constrained by outgoing bone directions. Guided by this analysis, GRACE uses reliability-gated alignment to correct composed orientations in parent-to-child order, leaving unconstrained components to the learned rotation predictor. A geometric correction module predicts bone directions and their reliability, then applies topology-dependent alignment updates while preserving unconstrained rotational components. The motion predictor and correction module are trained jointly with motion-derived supervision, using a frozen image encoder.</p>
+        <p>Experiments under the TopoCap evaluation protocol show that the proposed framework improves motion recovery across different target topologies, including unseen structures. Reference-based cross-skeleton evaluation on a curated Mixamo benchmark and a user preference study further assess transfer to different target structures. A causal CAST-B variant achieves over 51 FPS on a single NVIDIA A100 GPU, with timing covering image encoding and motion prediction.</p>
       </div></div>
     </div>
   </section>
