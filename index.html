@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="CAST recovers motion from monocular video for arbitrary target skeletons through topology-aware, reliability-gated rotation correction.">
   <meta name="theme-color" content="#152c45">
-  <title>CAST — Real-Time Motion Capture for Any Skeleton Topology</title>
+  <title>CAST: Real-Time Motion Capture for Any Skeleton Topology</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23152c45'/%3E%3Cpath d='M23 9H14a7 7 0 000 14h9' fill='none' stroke='%2359ded2' stroke-width='4'/%3E%3C/svg%3E">
   <!-- Google Sans / Noto Sans are only loaded when the page is served with network
        access. Kept off so the page is self-contained and renders instantly on
@@ -25,7 +25,7 @@
     <div class="hero-body">
       <div class="container is-max-widescreen">
         <div class="column has-text-centered">
-          <h1 id="title" class="title is-2 publication-title">Real-Time Motion Capture for Any Skeleton Topology</h1>
+          <h1 id="title" class="title is-2 publication-title">CAST: Real-Time Motion Capture for Any Skeleton Topology</h1>
           <div class="is-size-5 publication-authors"><span class="author-block">Anonymous Authors</span></div>
           <p class="publication-venue">Under review · research draft</p>
           <div class="publication-links">
@@ -42,7 +42,6 @@
               <a class="external-link button is-normal is-rounded" href="https://github.com/CAST-mocap/CAST" target="_blank" rel="noopener"><span class="icon" aria-hidden="true">&lt;/&gt;</span><span>Code</span></a>
             </span>
           </div>
-          <div class="highlights"><div><strong>53.9 <span>FPS</span></strong><p>Causal CAST-B · 52 joints · A100</p></div><div><strong>27.6–62.5<span>%</span></strong><p>Lower matched-rig MPJPE vs. MCA V2*</p></div><div><strong>300 <span>pairs</span></strong><p>Cross-skeleton evaluation on Mixamo</p></div></div>
         </div>
       </div>
     </div>
@@ -50,12 +49,10 @@
 
   <main id="main">
 
-  <section class="hero teaser" id="overview" aria-labelledby="overview-video-title">
+  <section class="hero teaser" id="overview" aria-label="Overview video">
     <div class="container is-max-desktop">
       <div class="hero-body">
-        <h2 id="overview-video-title" class="title is-3 has-text-centered">CAST, explained.</h2>
         <figure class="teaser-figure"><video controls playsinline preload="metadata" width="1920" height="1080" poster="assets/posters/cast-explainer.jpg" src="assets/videos/cast-explainer.mp4" aria-label="Overview video explaining how CAST recovers motion for an arbitrary target skeleton"></video></figure>
-        <h2 class="subtitle has-text-centered">One video. Different bodies. Motion that carries across.</h2>
       </div>
     </div>
   </section>
@@ -136,7 +133,7 @@
         </figure>
       </section>
       <div class="results-toolbar"><label for="dataset">Benchmark</label><select id="dataset"><option value="zoo">Zoo · Matched rig</option><option value="seen">MObj Seen · Matched rig</option><option value="unseen">MObj Unseen · Matched rig</option><option value="mixamo">Mixamo · Cross skeleton</option></select><span>Lower is better ↓</span></div>
-      <div class="table-scroll" tabindex="0" role="region" aria-label="Benchmark results, horizontally scrollable on small screens"><table class="table is-fullwidth"><caption id="table-caption">Zoo · Matched-rig motion capture</caption><thead><tr><th scope="col">Method</th><th scope="col">MPJPE <small>(mm)</small></th><th scope="col">PA-MPJPE <small>(mm)</small></th><th scope="col">MPJVE <small>(mm/frame)</small></th><th scope="col">CD</th></tr></thead><tbody id="results-body"><tr><th scope="row">Puppeteer</th><td>454.70</td><td>236.38</td><td>19.74</td><td>0.245</td></tr><tr><th scope="row">TopoCap</th><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><th scope="row">MCA V2*</th><td>105.52</td><td>67.04</td><td>10.35</td><td>0.077</td></tr><tr class="ours"><th scope="row">CAST-B</th><td>42.68</td><td>33.23</td><td>5.48</td><td>0.036</td></tr><tr class="best"><th scope="row">CAST-L <span>Ours</span></th><td>39.59</td><td>31.05</td><td>5.14</td><td>0.034</td></tr></tbody></table></div>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Benchmark results, horizontally scrollable on small screens"><table class="table is-fullwidth"><caption id="table-caption">Zoo · Matched-rig motion capture</caption><thead><tr><th scope="col">Method</th><th scope="col">MPJPE <small>(mm)</small></th><th scope="col">PA-MPJPE <small>(mm)</small></th><th scope="col">MPJVE <small>(mm/frame)</small></th><th scope="col">CD</th></tr></thead><tbody id="results-body"><tr><th scope="row">Puppeteer</th><td>454.70</td><td>236.38</td><td>19.74</td><td>0.245</td></tr><tr><th scope="row">TopoCap</th><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><th scope="row">MCA V2*</th><td>105.52</td><td>67.04</td><td>10.35</td><td>0.077</td></tr><tr class="ours"><th scope="row">CAST-B <span>Ours</span></th><td>42.68</td><td>33.23</td><td>5.48</td><td>0.036</td></tr><tr class="best"><th scope="row">CAST-L <span>Ours</span></th><td>39.59</td><td>31.05</td><td>5.14</td><td>0.034</td></tr></tbody></table></div>
       <p class="caption">Results from the current manuscript. MCA V2* is our reimplementation trained on the same Zoo and MObj data. Metrics use root-centered predictions and the TopoCap normalization convention; CD is in normalized coordinates. A dash denotes an unreported result.</p>
       <div class="result-notes"><article><strong>Unseen skeletons</strong><p>CAST-L reaches 74.63 mm MPJPE on MObj Unseen, compared with 103.04 mm for MCA V2*.</p></article><article><strong>Cross-skeleton transfer</strong><p>CAST-L reduces MPJPE by 54.7% relative to MCA V2* across 300 ordered source–target pairs on Mixamo.</p></article><article><strong>Perceptual quality</strong><p>CAST-L receives 63.3% of first-choice votes from 18 participants across 360 rankings.</p></article></div>
     </div>

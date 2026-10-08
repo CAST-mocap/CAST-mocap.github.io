@@ -12,6 +12,7 @@ const sources = {horse01: {label: 'Horse', frames: 81}, crab03: {label: 'Crab', 
 const FPS = 30;
 let currentSource = 'horse01';
 let playing = false;
+let autoStarted = false;
 let generation = 0;
 let frameRequest = 0;
 
@@ -68,8 +69,18 @@ timeline.addEventListener('input', () => {
   videos.forEach(v => { if (Number.isFinite(v.duration)) v.currentTime = fraction * v.duration; });
   if (!playing) updateTimeline();
 });
-videos[0].addEventListener('loadedmetadata', updateTimeline);
-videos[0].addEventListener('ended', () => { pauseAll(); updateTimeline(); });
+videos[0].addEventListener('loadedmetadata', () => {
+  updateTimeline();
+  // The gallery replays on its own: start it once the first clip is ready.
+  if (!autoStarted) {
+    autoStarted = true;
+    playAll();
+  }
+});
+videos[0].addEventListener('ended', () => {
+  videos.forEach(v => { v.currentTime = 0; });
+  playAll();
+});
 document.querySelectorAll('[data-source]').forEach(button => {
   button.addEventListener('click', () => {
     const resume = playing;
@@ -152,7 +163,7 @@ document.querySelector('#dataset').addEventListener('change', event => {
       const cell = document.createElement(index ? 'td' : 'th');
       if (!index) cell.scope = 'row';
       cell.textContent = index ? (value === null ? '—' : value.toFixed(index === 4 ? 3 : 2)) : value;
-      if (!index && value === 'CAST-L') {
+      if (!index && (value === 'CAST-B' || value === 'CAST-L')) {
         const label = document.createElement('span'); label.textContent = 'Ours'; cell.append(' ', label);
       }
       tr.append(cell);

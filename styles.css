@@ -4,12 +4,6 @@
 .eyebrow{ font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; color: var(--tp-muted); margin-bottom: .35rem; }
 .caption{ font-size: .9rem; color: var(--tp-muted); margin-top: .8rem; }
 
-/* Hero statistics */
-.highlights{ display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 1.5rem; }
-.highlights > div{ min-width: 158px; padding: 12px 16px; border: 1px solid var(--tp-rule); border-radius: var(--tp-radius); background: #fff; }
-.highlights strong{ display: block; font-size: 1.15rem; font-family: 'Google Sans', 'Noto Sans', sans-serif; }
-.highlights p{ margin: .2rem 0 0; font-size: .82rem; color: var(--tp-muted); line-height: 1.45; }
-
 /* Toolbars and pills */
 .demo-toolbar{ display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .7rem; margin: 1.3rem 0; }
 .source-buttons, .cross-group-buttons{ display: flex; flex-wrap: wrap; gap: .45rem; justify-content: center; }
@@ -64,7 +58,7 @@
 .table-scroll td, .table-scroll th{ border-color: #ededed !important; }
 .table-scroll tr.ours{ background: #f4faff; }
 .table-scroll tr.best{ background: #e9f5ff; font-weight: 600; }
-.table-scroll tr.best span{ font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--tp-link); margin-left: .35rem; }
+.table-scroll tr.ours span, .table-scroll tr.best span{ font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--tp-link); margin-left: .35rem; }
 .result-notes{ display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 1.6rem; }
 .result-notes article{ padding: 16px 18px; background: #fff; border: 1px solid var(--tp-rule); border-radius: var(--tp-radius); }
 .result-notes p{ margin: .35rem 0 0; font-size: .95rem; color: #4a4a4a; }
